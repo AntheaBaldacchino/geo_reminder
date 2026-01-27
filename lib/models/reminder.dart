@@ -6,19 +6,24 @@ part 'reminder.g.dart';
 class Reminder extends HiveObject {
   @HiveField(0)
   final String id;
-  
-  var longitude;
-  
-  var title;
-  
-  var latitude;
-  
-  var radiusMeters;
-  
-  var createdAt;
-  
-  var notified;
 
+  @HiveField(1)
+  final String title;
+
+  @HiveField(2)
+  final double latitude;
+
+  @HiveField(3)
+  final double longitude;
+
+  @HiveField(4)
+  final double radiusMeters;
+
+  @HiveField(5)
+  final DateTime createdAt;
+
+  @HiveField(6)
+  bool notified;
 
   Reminder({
     required this.id,
