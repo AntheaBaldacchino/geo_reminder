@@ -2,31 +2,37 @@ name: Flutter CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1) Pull your repository code into the runner
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2) Install Flutter SDK
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
 
+      # 3) Download project dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # 4) Static analysis
       - name: Analyze
         run: flutter analyze
 
+      # 5) Run unit/widget tests (don't have)
       - name: Run tests
         run: flutter test
 
+      # 6) Build a debug APK
       - name: Build APK (debug)
         run: flutter build apk --debug
