@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "641987734333",
+    "project_id": "newdatabase-2956b",
+    "storage_bucket": "newdatabase-2956b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641987734333:android:64c7cf2f5b1e326bb07354",
+        "android_client_info": {
+          "package_name": "com.example.geo_reminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4MzdQJSAgfyRi6oc9oMNJNg_UISdsUdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
