@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geo_reminder/screens/add_reminder_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/reminders_provider.dart';
+
 
 class RemindersScreen extends StatelessWidget {
   const RemindersScreen({super.key});
@@ -19,6 +21,16 @@ class RemindersScreen extends StatelessWidget {
             tooltip: 'Refresh location',
             onPressed: () => provider.refreshLocationAndCheck(),
             icon: const Icon(Icons.my_location),
+          ),
+          IconButton(
+            tooltip: 'Add reminder',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const AddReminderScreen()
+                ),
+              );
+            },
+            icon: const Icon(Icons.add),
           ),
         ],
       ),

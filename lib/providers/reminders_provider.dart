@@ -19,6 +19,7 @@ class RemindersProvider extends ChangeNotifier {
   List<Reminder> get items => List.unmodifiable(_items);
   Position? get currentPosition => _currentPosition;
 
+  // Call this method to initialize the provider
   Future<void> init() async {
     _box = Hive.box<Reminder>('reminders');
     _items = _box.values.toList();
@@ -62,7 +63,7 @@ class RemindersProvider extends ChangeNotifier {
       name: 'reminder_added',
       parameters: {'id': r.id, 'title': r.title},
     );
-    
+
     notifyListeners();
   }
 
@@ -74,6 +75,7 @@ class RemindersProvider extends ChangeNotifier {
       name: 'reminder_deleted',
       parameters: {'id': r.id},
     );
+    // Notify listeners after analytics event to ensure UI updates after logging
     notifyListeners();
   }
 
@@ -81,6 +83,7 @@ class RemindersProvider extends ChangeNotifier {
     final pos = _currentPosition;
     if (pos == null) return null;
 
+    // Calculate distance
     return _distanceMeters(
       pos.latitude,
       pos.longitude,
@@ -89,6 +92,7 @@ class RemindersProvider extends ChangeNotifier {
     );
   }
 
+  // Helper method to get current position with permission handling
   Future<Position> _getCurrentPosition() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -106,6 +110,7 @@ class RemindersProvider extends ChangeNotifier {
       throw Exception('Location permission permanently denied.');
     }
 
+  // When we reach here, permissions are granted and we can get the position
     return Geolocator.getCurrentPosition(
       locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
     );
